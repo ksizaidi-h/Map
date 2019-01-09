@@ -25,6 +25,7 @@ namespace DotSpatialMap.Models
         {
             LayersFactory = new LayersFactory();
             this.map = map;
+            
 
         }
 

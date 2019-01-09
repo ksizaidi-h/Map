@@ -193,5 +193,24 @@ namespace DotSpatialMap.Views
         }
         #endregion Handle Methodes
 
+        private void spatialToolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+//            MessageBox.Show(e.GetHashCode+" ");
+
+          
+           // IFeatureSet fs = FeatureSet.Open("C:\\Temp\\roads.shp");
+
+        }
+
+        private void App_MapChanged(object sender, DotSpatial.Controls.MapChangedEventArgs e)
+        {
+            MessageBox.Show("salam");
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            Map.Layers.LayerSelected += handle_Layer_Selected_Changed;
+
+        }
     }
 }
