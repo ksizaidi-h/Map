@@ -100,9 +100,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\ITopology.cs" />
     <Compile Include="Models\IModel.cs" />
     <Compile Include="Models\LayersFactory.cs" />
     <Compile Include="Models\Map.cs" />
+    <Compile Include="Models\MNHGTopology.cs" />
+    <Compile Include="Models\MNOTopology.cs" />
     <Compile Include="Presenters\AddLayerDialogPresenter.cs" />
     <Compile Include="Presenters\DrawingToolsBoxPresenter.cs" />
     <Compile Include="Presenters\GeoCoordinatesPresenter.cs" />
