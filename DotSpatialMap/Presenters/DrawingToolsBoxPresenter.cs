@@ -51,12 +51,19 @@ namespace DotSpatialMap.Presenters
             if (View.PointDrawingToolChecked)
             {
                 View.AddPoint += DrawingPoint;
+                View.RemoveLastPoint += RemoveDrawnPoint;
             }
             else
             {
                 View.AddPoint -= DrawingPoint;
+                View.RemoveLastPoint -= RemoveDrawnPoint;
                 
             }
+        }
+
+        private void RemoveDrawnPoint(object sender, EventArgs e)
+        {
+            //TODO
         }
 
         private void DrawingPoint(object sender, EventArgs e)
@@ -75,6 +82,7 @@ namespace DotSpatialMap.Presenters
             if (View.PolygonDrawingToolChecked)
             {
                 View.AddPoint += AddPointToPolygon;
+                View.RemoveLastPoint += RemoveLasPointFromPolygon;
                 View.StopDrawing += StopDrawingPolygon;
 
             }
@@ -88,7 +96,18 @@ namespace DotSpatialMap.Presenters
 
         }
 
-
+        private void RemoveLasPointFromPolygon(object sender, EventArgs e)
+        {
+            if(points.Count > 0)
+            {
+                points.RemoveAt(points.Count - 1);
+                coordinates.RemoveAt(coordinates.Count - 1);
+                if(points.Count == 0)
+                {
+                    View.Draw -= DrawingPolygon;
+                }
+            }
+        }
 
         private void StopDrawingPolygon(object sender, EventArgs e)
         {
@@ -139,15 +158,30 @@ namespace DotSpatialMap.Presenters
             {
                 linePoints = new List<System.Drawing.PointF>();
                 View.AddPoint += AddPointToLine;
+                View.RemoveLastPoint += RemoveLastPointFromLine;
                 View.StopDrawing += StopDrawingLine;
 
             }
             else
             {
                 View.AddPoint -= AddPointToLine;
+                View.RemoveLastPoint -= RemoveLastPointFromLine;
                 View.StopDrawing -= StopDrawingLine;
                 points.Clear();
                 coordinates.Clear();
+            }
+        }
+
+        private void RemoveLastPointFromLine(object sender, EventArgs e)
+        {
+            if(linePoints.Count > 0)
+            {
+                linePoints.RemoveAt(linePoints.Count - 1);
+                coordinates.RemoveAt(coordinates.Count - 1);
+                if(linePoints.Count == 0)
+                {
+                    View.Draw -= DrawingLine;
+                }
             }
         }
 

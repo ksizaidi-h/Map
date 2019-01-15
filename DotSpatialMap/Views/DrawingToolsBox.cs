@@ -28,5 +28,6 @@ namespace DotSpatialMap.Views
         event EventHandler DrawPolygon;
         event EventHandler DrawLine;
         event EventHandler DrawPoint;
+        event EventHandler RemoveLastPoint;
     }
 }

@@ -105,6 +105,7 @@ namespace DotSpatialMap.Views
         public event EventHandler DrawLine;
         public event EventHandler DrawPoint;
         public event EventHandler StopDrawingShapes;
+        public event EventHandler RemoveLastPoint;
 
 
 
@@ -182,11 +183,23 @@ namespace DotSpatialMap.Views
         }
         private void Map_Click(object sender, EventArgs e)
         {
-
-            var handler = AddPoint;
-            if (handler == null)
+            EventHandler handler;
+            MouseEventArgs args = (MouseEventArgs)e;
+            if(args.Button == MouseButtons.Left)
             {
-                return;
+                handler = AddPoint;
+                if (handler == null)
+                {
+                    return;
+                }
+            }
+            else
+            {
+                handler = RemoveLastPoint;
+                if(handler == null)
+                {
+                    return;
+                }
             }
 
             handler(this, e);
