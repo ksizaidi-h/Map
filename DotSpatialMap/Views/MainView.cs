@@ -27,7 +27,9 @@ namespace DotSpatialMap.Views
         {
             
             InitializeComponent();
-            
+            this.WindowState = FormWindowState.Maximized;
+
+
 
 
             Map map = new Map(Map);
@@ -282,6 +284,47 @@ namespace DotSpatialMap.Views
             var handler = ExecuteTopologicalQuery;
             if (handler == null) return;
             handler(this, e);
+        }
+
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Map.AddLayer();
+
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Do you want to close this application ?", "Admin", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                this.Close();
+            }
+        }
+
+        private void zoomInToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Map.ZoomIn();
+
+        }
+
+        private void zoomOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Map.ZoomOut();
+
+        }
+
+        private void zoomToExtentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Map.ZoomToMaxExtent();
+
+        }
+
+        private void createShapeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var handler = AddEmptyLayer;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
         }
     }
 
