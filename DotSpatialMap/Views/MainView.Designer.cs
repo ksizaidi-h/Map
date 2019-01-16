@@ -43,7 +43,6 @@
             this.drawPolygonBtn = new System.Windows.Forms.ToolStripButton();
             this.drawLineBtn = new System.Windows.Forms.ToolStripButton();
             this.drawPointBtn = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.pnlOperations = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -157,7 +156,6 @@
             // 
             // spatialStatusStrip1
             // 
-           // this.spatialStatusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.spatialStatusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.curruntCoordinates,
             this.toolStripProgressBar1});
@@ -184,14 +182,12 @@
             // spatialToolStrip2
             // 
             this.spatialToolStrip2.ApplicationManager = this.App;
-            this.spatialToolStrip2.Items.RemoveAt(14);
             this.spatialToolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addEmptyLayerBtn,
             this.toolStripSeparator2,
             this.drawPolygonBtn,
             this.drawLineBtn,
             this.drawPointBtn,
-            this.toolStripButton1,
             this.toolStripButton2});
             this.spatialToolStrip2.Location = new System.Drawing.Point(0, 24);
             this.spatialToolStrip2.Map = this.Map;
@@ -248,15 +244,6 @@
             this.drawPointBtn.Size = new System.Drawing.Size(23, 22);
             this.drawPointBtn.Text = "toolStripButton4";
             this.drawPointBtn.CheckedChanged += new System.EventHandler(this.draw_Point_Btn_Checked);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
             // 
             // toolStripButton2
             // 
@@ -321,7 +308,7 @@
             // createShapeToolStripMenuItem
             // 
             this.createShapeToolStripMenuItem.Name = "createShapeToolStripMenuItem";
-            this.createShapeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createShapeToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.createShapeToolStripMenuItem.Text = "Create Shape";
             this.createShapeToolStripMenuItem.Click += new System.EventHandler(this.createShapeToolStripMenuItem_Click);
             // 
@@ -419,7 +406,6 @@
         private System.Windows.Forms.ToolStripMenuItem zoomInToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zoomOutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zoomToExtentToolStripMenuItem;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripMenuItem createShapeToolStripMenuItem;
     }

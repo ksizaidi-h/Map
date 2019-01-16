@@ -27,7 +27,7 @@ namespace DotSpatialMap.Views
         {
             
             InitializeComponent();
-            this.WindowState = FormWindowState.Maximized;
+            //this.WindowState = FormWindowState.Maximized;
 
 
 

@@ -62,9 +62,10 @@ namespace DotSpatialMap.Models
                     throw new Exception("The selected layer does't support drawing");
             }
 
-            map.Refresh();
-            
-           
+             map.Refresh();
+           // map.Upda();
+
+
         }
 
         public void Refresh()

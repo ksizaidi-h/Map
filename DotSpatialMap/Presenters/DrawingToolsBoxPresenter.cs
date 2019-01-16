@@ -182,8 +182,10 @@ namespace DotSpatialMap.Presenters
             }
 
             points.Add(args.Location);
-            
-            View.graphics.DrawPolygon(System.Drawing.Pens.Black, points.ToArray());
+
+            System.Drawing.Pen pen = new System.Drawing.Pen(System.Drawing.Color.DarkBlue, 3.5F);
+
+            View.graphics.DrawPolygon(pen, points.ToArray());
             View.graphics.FillPolygon(brush, points.ToArray());
             View.graphics.Dispose();
         }
