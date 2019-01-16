@@ -123,6 +123,12 @@
       <DependentUpon>AddLayerDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\DrawingToolsBox.cs" />
+    <Compile Include="Views\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\IGeoCoordinatesLabel.cs" />
     <Compile Include="Views\IMainView.cs" />
     <Compile Include="Views\INewLayerDialog.cs" />
@@ -151,6 +157,9 @@
     </Compile>
     <EmbeddedResource Include="Views\AddLayerDialog.resx">
       <DependentUpon>AddLayerDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>

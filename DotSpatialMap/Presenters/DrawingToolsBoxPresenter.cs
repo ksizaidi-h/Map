@@ -256,6 +256,7 @@ namespace DotSpatialMap.Presenters
         private void DrawingLine(object sender, EventArgs e)
         {
             DotSpatial.Controls.GeoMouseArgs args = (DotSpatial.Controls.GeoMouseArgs)e;
+            System.Drawing.Pen pen = new System.Drawing.Pen(System.Drawing.Color.Red, 5.5F);
 
             if (linePoints.Count > 1)
             {
@@ -263,7 +264,7 @@ namespace DotSpatialMap.Presenters
             }
 
             linePoints.Add(args.Location);
-            View.graphics.DrawLines(System.Drawing.Pens.Black,linePoints.ToArray());
+            View.graphics.DrawLines(pen, linePoints.ToArray());
             
         }
 
