@@ -269,7 +269,7 @@ namespace DotSpatialMap.Views
         private void Map_Paint(object sender, PaintEventArgs e)
         {
             
-            Map.MapFrame.Draw(e);
+            //Map.MapFrame.Draw(e);
             
         }
 
