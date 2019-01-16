@@ -11,12 +11,12 @@ using GeoAPI.Geometries;
 
 namespace DotSpatialMap.Models
 {
-    public class Map:IModel
+    public class Map : IModel
     {
         private IMap map;
+        public TopologyRequestHandler Handler { get; }
 
-
-      
+        public IMapFeatureLayer selectedLayer { get => (IMapFeatureLayer) map.Layers.SelectedLayer; }      
 
         LayersFactory LayersFactory{ get; set; }
 
@@ -28,16 +28,15 @@ namespace DotSpatialMap.Models
         {
             LayersFactory = new LayersFactory();
             this.map = map;
-            
+            Handler = new TopologyRequestHandler(this);
         }
 
         public void AddEmptyLayer(string type, string layerName)
         {
             IMapFeatureLayer layer = LayersFactory.CreateLayer(type, layerName);
             map.Layers.Add(layer);
+
             map.MapFrame.DrawingLayers.Add(layer);
-            
-            
         }
 
         public void addFeature(IGeometry geometry)
