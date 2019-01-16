@@ -13,6 +13,7 @@ using DotSpatial.Symbology;
 using GeoAPI.Geometries;
 using NetTopologySuite.Geometries;
 using DotSpatial.Data;
+using System.Threading;
 
 namespace DotSpatialMap.Views
 {
@@ -93,8 +94,11 @@ namespace DotSpatialMap.Views
         public bool PolygonDrawingToolChecked { get => drawPolygonBtn.Checked; set => drawPolygonBtn.Checked = value; }
         public bool PointDrawingToolChecked { get => drawPointBtn.Checked; set => drawPointBtn.Checked = value; }
         public bool LineDrawingToolChecked { get => drawLineBtn.Checked; set => drawLineBtn.Checked = value; }
+        private string itemClicked;
+        public string ItemClicked { get => itemClicked; }
 
-        public Graphics graphics => Map.CreateGraphics();
+
+        public Graphics graphics => Graphics.FromHwnd(Map.Handle);
 
         public event EventHandler<LayerSelectedEventArgs> SelectedLayerChanged;
         public event EventHandler Draw;
@@ -114,6 +118,8 @@ namespace DotSpatialMap.Views
 
         #region IGeoCoordinateLabel
         public string GeoLocation { set => curruntCoordinates.Text = value; }
+        public Cursor MapCursor { set => Map.Cursor = value; }
+
         public event EventHandler CoordinateChanged;
         #endregion IGeoCoordinateLabel
 
@@ -149,11 +155,13 @@ namespace DotSpatialMap.Views
         }
         private void handle_Geo_Mosue_Move(object sender, DotSpatial.Controls.GeoMouseArgs e)
         {
-
+            
             var handler = Draw;
+            Map.Invalidate();
+            Map.Update();
             handler += CoordinateChanged;
-            Refresh();
-
+             // Refresh();
+            
             if (handler != null)
             {
                 handler(this, e);
@@ -208,11 +216,12 @@ namespace DotSpatialMap.Views
 
         private void spatialToolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-//            MessageBox.Show(e.GetHashCode+" ");
+            //            MessageBox.Show(e.GetHashCode+" ");
 
-          
-           // IFeatureSet fs = FeatureSet.Open("C:\\Temp\\roads.shp");
 
+            // IFeatureSet fs = FeatureSet.Open("C:\\Temp\\roads.shp");
+
+            
         }
 
         private void App_MapChanged(object sender, DotSpatial.Controls.MapChangedEventArgs e)
@@ -225,5 +234,45 @@ namespace DotSpatialMap.Views
             Map.Layers.LayerSelected += handle_Layer_Selected_Changed;
 
         }
+
+        private void spatialToolStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            
+            setItemClicked(e);
+            var handler = CancelDrawing;     
+            if (handler == null)
+            {
+                return;
+            }
+            handler(this, e);
+        }
+
+        private void setItemClicked(ToolStripItemClickedEventArgs e)
+        {
+            var clicked = e.ClickedItem.Name;
+            if (clicked == "drawPolygonBtn") { itemClicked = "POLYGON"; }
+            else if  (clicked == "drawLineBtn") {itemClicked = "LINE"; }
+            else if (clicked == "drawPointBtn") { itemClicked = "Point"; }
+            else
+            {
+                itemClicked = clicked;
+            }
+               
+        }
+
+        private void Map_Paint(object sender, PaintEventArgs e)
+        {
+            
+            Map.MapFrame.Draw(e);
+            
+        }
+
+        private void Map_SelectionChanged(object sender, EventArgs e)
+        {
+            IFeatureLayer layer = (IFeatureLayer)Map.Layers.SelectedLayer;
+            layer.UnSelectAll();
+        }
     }
+
+    
 }

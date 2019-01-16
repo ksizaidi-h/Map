@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DotSpatialMap.Views
 {
@@ -15,7 +16,9 @@ namespace DotSpatialMap.Views
         bool PolygonDrawingToolChecked { get; set; }
         bool PointDrawingToolChecked { get; set; }
         bool LineDrawingToolChecked { get; set; }
+        string ItemClicked { get; }
         Graphics graphics { get; }
+        Cursor MapCursor { set; }
 
         event EventHandler<DotSpatial.Symbology.LayerSelectedEventArgs> SelectedLayerChanged;
 
