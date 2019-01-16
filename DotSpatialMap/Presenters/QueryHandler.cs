@@ -1,5 +1,6 @@
 ﻿using DotSpatialMap.Models;
 using DotSpatialMap.Views;
+using GeoAPI.Geometries;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,8 +37,54 @@ namespace DotSpatialMap.Presenters
 
         private void RunSpecifiedQuery(object sender, EventArgs e)
         {
-            var result = handler.GetIntersect();
-            map.addFeature(result);
+            IGeometry result;
+
+            switch(View.RequestType)
+            {
+                case "Union":
+                    result = handler.GetUnion();
+                    break;
+                case "Intersection":
+                    result = handler.GetIntersect();
+                    break;
+                case "Couverture":
+                    result = null;
+                    break;
+                case "Difference":
+                    result = handler.GetDifference();
+                    break;
+                default:
+                    result = null;
+                    break;
+            }
+
+            if(result == null)
+            {
+                MessageBox.Show("Operation non valide.");
+                return;
+            }
+
+            var type = result.GeometryType;
+            var addedLayer = map.AddEmptyLayer(type, "Query Result");
+
+            switch (addedLayer.ToString())
+            {
+                case "DotSpatial.Controls.MapLineLayer":
+                    ((DotSpatial.Controls.MapLineLayer)addedLayer).FeatureSet.AddFeature(result);
+                    break;
+                case "DotSpatial.Controls.MapPolygonLayer":
+                    ((DotSpatial.Controls.MapPolygonLayer)addedLayer).FeatureSet.AddFeature(result);
+                    break;
+
+                case "DotSpatial.Controls.MapPointLayer":
+                    ((DotSpatial.Controls.MapPointLayer)addedLayer).FeatureSet.AddFeature(result);
+                    break;
+
+                default:
+                    throw new Exception("Geometry is empty!");
+            }
+
+            map.Refresh();
         }
     }
 }

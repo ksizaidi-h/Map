@@ -34,29 +34,37 @@ namespace DotSpatialMap.Models
                 result = result.Intersection(features[i].Geometry);
             }
 
-            var type = result.GeometryType;
-            var addedLayer = map.AddEmptyLayer(type, "Query Result");
+            return result;
+        }
 
-            switch (addedLayer.ToString())
+        public IGeometry GetUnion()
+        {
+            var layer = map.selectedLayer;
+            var features = layer.Selection.ToFeatureList();
+            IGeometry result;
+
+            result = features.First().Geometry; // TODO Type safety
+
+            for (int i = 1; i < features.Count; i++)
             {
-                case "DotSpatial.Controls.MapLineLayer":
-                    ((MapLineLayer)addedLayer).FeatureSet.AddFeature(result);
-                    break;
-                case "DotSpatial.Controls.MapPolygonLayer":
-                    ((MapPolygonLayer)addedLayer).FeatureSet.AddFeature(result);
-                    break;
-
-                case "DotSpatial.Controls.MapPointLayer":
-                    ((MapPointLayer)addedLayer).FeatureSet.AddFeature(result);
-                    break;
-
-                default:
-                    throw new Exception("Geometry is empty!");
-
-
+                result = result.Union(features[i].Geometry);
             }
 
-            map.Refresh();
+            return result;
+        }
+
+        public IGeometry GetDifference()
+        {
+            var layer = map.selectedLayer;
+            var features = layer.Selection.ToFeatureList();
+            IGeometry result;
+
+            result = features.First().Geometry; // TODO Type safety
+
+            for (int i = 1; i < features.Count; i++)
+            {
+                result = result.Difference(features[i].Geometry);
+            }
 
             return result;
         }

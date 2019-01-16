@@ -38,7 +38,9 @@
             this.QueryTypeChooser.FormattingEnabled = true;
             this.QueryTypeChooser.Items.AddRange(new object[] {
             "Intersection",
-            "Union"});
+            "Union",
+            "Couverture",
+            "Difference"});
             this.QueryTypeChooser.Location = new System.Drawing.Point(61, 43);
             this.QueryTypeChooser.Name = "QueryTypeChooser";
             this.QueryTypeChooser.Size = new System.Drawing.Size(237, 21);
