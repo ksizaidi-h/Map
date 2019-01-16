@@ -27,6 +27,7 @@ namespace DotSpatialMap.Views
         {
            
             InitializeComponent();
+            
 
             Presenter = new MainViewPresenter(this, new Map(Map));
             Presenter.addPresenter(new DrawingToolsBoxPresenter(this));
@@ -36,6 +37,7 @@ namespace DotSpatialMap.Views
 
 
             Map.Layers.LayerSelected += handle_Layer_Selected_Changed;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
 
             InvokeInitialize(new EventArgs());
 
@@ -269,8 +271,8 @@ namespace DotSpatialMap.Views
 
         private void Map_SelectionChanged(object sender, EventArgs e)
         {
-            IFeatureLayer layer = (IFeatureLayer)Map.Layers.SelectedLayer;
-            layer.UnSelectAll();
+            DotSpatial.Data.FeatureSet feature;
+            
         }
     }
 
