@@ -43,6 +43,7 @@
             this.drawPolygonBtn = new System.Windows.Forms.ToolStripButton();
             this.drawLineBtn = new System.Windows.Forms.ToolStripButton();
             this.drawPointBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.pnlOperations = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,7 +78,7 @@
             this.updateAttributeTableInShapefileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.exportAttributeTableToExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spatialDockManager1)).BeginInit();
             this.spatialDockManager1.Panel1.SuspendLayout();
@@ -209,7 +210,8 @@
             this.drawPolygonBtn,
             this.drawLineBtn,
             this.drawPointBtn,
-            this.toolStripButton1});
+            this.toolStripButton1,
+            this.toolStripButton2});
             this.spatialToolStrip2.Location = new System.Drawing.Point(0, 24);
             this.spatialToolStrip2.Map = this.Map;
             this.spatialToolStrip2.Name = "spatialToolStrip2";
@@ -264,6 +266,15 @@
             this.drawPointBtn.Size = new System.Drawing.Size(23, 22);
             this.drawPointBtn.Text = "toolStripButton4";
             this.drawPointBtn.CheckedChanged += new System.EventHandler(this.draw_Point_Btn_Checked);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
             // 
             // pnlOperations
             // 
@@ -465,7 +476,7 @@
             this.toolStripSeparator4,
             this.exportAttributeTableToExcelToolStripMenuItem});
             this.attributeToolStripMenuItem.Name = "attributeToolStripMenuItem";
-            this.attributeToolStripMenuItem.Size = new System.Drawing.Size(154, 20);
+            this.attributeToolStripMenuItem.Size = new System.Drawing.Size(153, 20);
             this.attributeToolStripMenuItem.Text = "Attribute Table Operation";
             // 
             // viewAttributeTableToolStripMenuItem
@@ -509,14 +520,15 @@
             this.exportAttributeTableToExcelToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
             this.exportAttributeTableToExcelToolStripMenuItem.Text = "Export Attribute table to Excel";
             // 
-            // toolStripButton1
+            // toolStripButton2
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // MainView
             // 
@@ -598,5 +610,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem exportAttributeTableToExcelToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
     }
 }

@@ -24,14 +24,16 @@ namespace DotSpatialMap.Views
         
         public MainView()
         {
-           
+            
             InitializeComponent();
 
-            Presenter = new MainViewPresenter(this, new Map(Map));
+
+            Map map = new Map(Map);
+            Presenter = new MainViewPresenter(this, map);
             Presenter.addPresenter(new DrawingToolsBoxPresenter(this));
             Presenter.addPresenter(new GeoCoordinatesPresenter(this));
 
-            Presenter.setModel(new Map(Map));
+            Presenter.setModel(map);
 
 
             Map.Layers.LayerSelected += handle_Layer_Selected_Changed;
@@ -211,6 +213,13 @@ namespace DotSpatialMap.Views
         {
             Map.Layers.LayerSelected += handle_Layer_Selected_Changed;
 
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            var handler = ExecuteTopologicalQuery;
+            if (handler == null) return;
+            handler(this, e);
         }
     }
 }
