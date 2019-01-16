@@ -31,12 +31,14 @@ namespace DotSpatialMap.Models
             Handler = new TopologyRequestHandler(this);
         }
 
-        public void AddEmptyLayer(string type, string layerName)
+        public IMapFeatureLayer AddEmptyLayer(string type, string layerName)
         {
             IMapFeatureLayer layer = LayersFactory.CreateLayer(type, layerName);
             map.Layers.Add(layer);
 
             map.MapFrame.DrawingLayers.Add(layer);
+
+            return layer;
         }
 
         public void addFeature(IGeometry geometry)
@@ -58,13 +60,16 @@ namespace DotSpatialMap.Models
 
                 default:
                     throw new Exception("The selected layer does't support drawing");
-                   
-
             }
 
             map.Refresh();
             
            
+        }
+
+        public void Refresh()
+        {
+            map.Refresh();
         }
 
         public Coordinate PixelToProj(System.Drawing.Point location)

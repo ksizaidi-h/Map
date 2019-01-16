@@ -34,7 +34,30 @@ namespace DotSpatialMap.Models
                 result = result.Intersection(features[i].Geometry);
             }
 
-            // TODO show result
+            var type = result.GeometryType;
+            var addedLayer = map.AddEmptyLayer(type, "Query Result");
+
+            switch (addedLayer.ToString())
+            {
+                case "DotSpatial.Controls.MapLineLayer":
+                    ((MapLineLayer)addedLayer).FeatureSet.AddFeature(result);
+                    break;
+                case "DotSpatial.Controls.MapPolygonLayer":
+                    ((MapPolygonLayer)addedLayer).FeatureSet.AddFeature(result);
+                    break;
+
+                case "DotSpatial.Controls.MapPointLayer":
+                    ((MapPointLayer)addedLayer).FeatureSet.AddFeature(result);
+                    break;
+
+                default:
+                    throw new Exception("Geometry is empty!");
+
+
+            }
+
+            map.Refresh();
+
             return result;
         }
     }
