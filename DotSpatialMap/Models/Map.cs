@@ -36,7 +36,7 @@ namespace DotSpatialMap.Models
             IMapFeatureLayer layer = LayersFactory.CreateLayer(type, layerName);
             map.Layers.Add(layer);
 
-            map.MapFrame.DrawingLayers.Add(layer);
+            //map.MapFrame.DrawingLayers.Add(layer);
 
             return layer;
         }

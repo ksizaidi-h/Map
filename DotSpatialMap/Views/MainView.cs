@@ -269,14 +269,13 @@ namespace DotSpatialMap.Views
         private void Map_Paint(object sender, PaintEventArgs e)
         {
             
-            Map.MapFrame.Draw(e);
+            //Map.MapFrame.Draw(e);
             
         }
 
         private void Map_SelectionChanged(object sender, EventArgs e)
         {
-            DotSpatial.Data.FeatureSet feature;
-            
+
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)

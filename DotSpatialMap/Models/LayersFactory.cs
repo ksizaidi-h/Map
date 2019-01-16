@@ -20,8 +20,11 @@ namespace DotSpatialMap.Models
                 case "Point":
                     layer = new MapPointLayer();
                     break;
+                case "MultiPolygon":
+                    layer = new MapPolygonLayer();
+                    break;
                 default:
-                    throw new Exception("Wrong Layer Class");
+                    throw new Exception("Wrong Layer Class:" + type);
                        
             }
             layer.DataSet.Name = layerName;

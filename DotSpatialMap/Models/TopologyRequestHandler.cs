@@ -27,6 +27,11 @@ namespace DotSpatialMap.Models
             var features = layer.Selection.ToFeatureList();
             IGeometry result;
 
+            if (features.Count == 0)
+            {
+                return null;
+            }
+
             result = features.First().Geometry; // TODO Type safety
 
             for(int i = 1; i < features.Count; i++)
@@ -43,6 +48,11 @@ namespace DotSpatialMap.Models
             var features = layer.Selection.ToFeatureList();
             IGeometry result;
 
+            if (features.Count == 0)
+            {
+                return null;
+            }
+
             result = features.First().Geometry; // TODO Type safety
 
             for (int i = 1; i < features.Count; i++)
@@ -58,6 +68,11 @@ namespace DotSpatialMap.Models
             var layer = map.selectedLayer;
             var features = layer.Selection.ToFeatureList();
             IGeometry result;
+
+            if(features.Count == 0)
+            {
+                return null;
+            }
 
             result = features.First().Geometry; // TODO Type safety
 
