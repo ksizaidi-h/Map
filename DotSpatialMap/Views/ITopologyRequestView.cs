@@ -11,5 +11,6 @@ namespace DotSpatialMap.Views
         string RequestType { get; }
 
         event EventHandler RunQuery;
+        event EventHandler Cancel;
     }
 }

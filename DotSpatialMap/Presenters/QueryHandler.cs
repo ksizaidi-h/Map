@@ -27,7 +27,13 @@ namespace DotSpatialMap.Presenters
         {
             base.OnViewInitialize(sender, e);
             View.RunQuery += RunSpecifiedQuery;
+            View.Cancel += Cancel;
             View.ShowDialog();
+        }
+
+        private void Cancel(object sender, EventArgs e)
+        {
+            View.Close();
         }
 
         protected override void OnViewLoad(object sender, EventArgs e)

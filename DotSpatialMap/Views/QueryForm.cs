@@ -39,12 +39,20 @@ namespace DotSpatialMap.Views
 
         public event EventHandler RunQuery;
         public event EventHandler Initialize;
+        public event EventHandler Cancel;
 
         private void queryButtonOKClick(object sender, EventArgs e)
         {
             var handler = RunQuery;
             if (handler == null) return;
 
+            handler(this, e);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var handler = Cancel;
+            if (handler == null) return;
             handler(this, e);
         }
     }
