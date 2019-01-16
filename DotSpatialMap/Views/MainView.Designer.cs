@@ -108,8 +108,8 @@
             // spatialDockManager1
             // 
             this.spatialDockManager1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.spatialDockManager1.Location = new System.Drawing.Point(0, 49);
-            this.spatialDockManager1.Margin = new System.Windows.Forms.Padding(2);
+            this.spatialDockManager1.Location = new System.Drawing.Point(0, 55);
+            this.spatialDockManager1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.spatialDockManager1.Name = "spatialDockManager1";
             // 
             // spatialDockManager1.Panel1
@@ -119,9 +119,8 @@
             // spatialDockManager1.Panel2
             // 
             this.spatialDockManager1.Panel2.Controls.Add(this.Map);
-            this.spatialDockManager1.Size = new System.Drawing.Size(600, 295);
-            this.spatialDockManager1.SplitterDistance = 199;
-            this.spatialDockManager1.SplitterWidth = 3;
+            this.spatialDockManager1.Size = new System.Drawing.Size(800, 369);
+            this.spatialDockManager1.SplitterDistance = 265;
             this.spatialDockManager1.TabControl1 = null;
             this.spatialDockManager1.TabControl2 = null;
             this.spatialDockManager1.TabIndex = 2;
@@ -129,21 +128,21 @@
             // legend1
             // 
             this.legend1.BackColor = System.Drawing.Color.White;
-            this.legend1.ControlRectangle = new System.Drawing.Rectangle(0, 0, 199, 295);
+            this.legend1.ControlRectangle = new System.Drawing.Rectangle(0, 0, 265, 369);
             this.legend1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.legend1.DocumentRectangle = new System.Drawing.Rectangle(0, 0, 187, 428);
             this.legend1.HorizontalScrollEnabled = true;
             this.legend1.Indentation = 30;
             this.legend1.IsInitialized = false;
             this.legend1.Location = new System.Drawing.Point(0, 0);
-            this.legend1.Margin = new System.Windows.Forms.Padding(2);
-            this.legend1.MinimumSize = new System.Drawing.Size(4, 4);
+            this.legend1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.legend1.MinimumSize = new System.Drawing.Size(5, 5);
             this.legend1.Name = "legend1";
             this.legend1.ProgressHandler = null;
             this.legend1.ResetOnResize = false;
             this.legend1.SelectionFontColor = System.Drawing.Color.Black;
             this.legend1.SelectionHighlight = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(238)))), ((int)(((byte)(252)))));
-            this.legend1.Size = new System.Drawing.Size(199, 295);
+            this.legend1.Size = new System.Drawing.Size(265, 369);
             this.legend1.TabIndex = 0;
             this.legend1.Text = "legend1";
             this.legend1.VerticalScrollEnabled = true;
@@ -161,18 +160,20 @@
             this.Map.IsZoomedToMaxExtent = false;
             this.Map.Legend = this.legend1;
             this.Map.Location = new System.Drawing.Point(0, 0);
-            this.Map.Margin = new System.Windows.Forms.Padding(2);
+            this.Map.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Map.Name = "Map";
             this.Map.ProgressHandler = this.spatialStatusStrip1;
-            this.Map.ProjectionModeDefine = DotSpatial.Controls.ActionMode.Prompt;
-            this.Map.ProjectionModeReproject = DotSpatial.Controls.ActionMode.Prompt;
+            this.Map.ProjectionModeDefine = DotSpatial.Controls.ActionMode.Never;
+            this.Map.ProjectionModeReproject = DotSpatial.Controls.ActionMode.Never;
             this.Map.RedrawLayersWhileResizing = true;
             this.Map.SelectionEnabled = true;
-            this.Map.Size = new System.Drawing.Size(398, 295);
+            this.Map.Size = new System.Drawing.Size(531, 369);
             this.Map.TabIndex = 0;
             this.Map.ZoomOutFartherThanMaxExtent = false;
+            this.Map.SelectionChanged += new System.EventHandler(this.Map_SelectionChanged);
             this.Map.GeoMouseMove += new System.EventHandler<DotSpatial.Controls.GeoMouseArgs>(this.handle_Geo_Mosue_Move);
             this.Map.Click += new System.EventHandler(this.Map_Click);
+            this.Map.Paint += new System.Windows.Forms.PaintEventHandler(this.Map_Paint);
             this.Map.DoubleClick += new System.EventHandler(this.Map_DoubleClick);
             // 
             // spatialStatusStrip1
@@ -181,29 +182,30 @@
             this.spatialStatusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.curruntCoordinates,
             this.toolStripProgressBar1});
-            this.spatialStatusStrip1.Location = new System.Drawing.Point(0, 344);
+            this.spatialStatusStrip1.Location = new System.Drawing.Point(0, 424);
             this.spatialStatusStrip1.Name = "spatialStatusStrip1";
-            this.spatialStatusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
+            this.spatialStatusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 13, 0);
             this.spatialStatusStrip1.ProgressBar = this.toolStripProgressBar1;
             this.spatialStatusStrip1.ProgressLabel = this.curruntCoordinates;
-            this.spatialStatusStrip1.Size = new System.Drawing.Size(600, 22);
+            this.spatialStatusStrip1.Size = new System.Drawing.Size(800, 26);
             this.spatialStatusStrip1.TabIndex = 0;
             this.spatialStatusStrip1.Text = "spatialStatusStrip1";
             // 
             // curruntCoordinates
             // 
             this.curruntCoordinates.Name = "curruntCoordinates";
-            this.curruntCoordinates.Size = new System.Drawing.Size(118, 17);
+            this.curruntCoordinates.Size = new System.Drawing.Size(151, 21);
             this.curruntCoordinates.Text = "toolStripStatusLabel1";
             // 
             // toolStripProgressBar1
             // 
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(75, 16);
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 20);
             // 
             // spatialToolStrip2
             // 
             this.spatialToolStrip2.ApplicationManager = this.App;
+            this.spatialToolStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.spatialToolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addEmptyLayerBtn,
             this.toolStripSeparator2,
@@ -215,9 +217,10 @@
             this.spatialToolStrip2.Location = new System.Drawing.Point(0, 24);
             this.spatialToolStrip2.Map = this.Map;
             this.spatialToolStrip2.Name = "spatialToolStrip2";
-            this.spatialToolStrip2.Size = new System.Drawing.Size(600, 25);
+            this.spatialToolStrip2.Size = new System.Drawing.Size(800, 27);
             this.spatialToolStrip2.TabIndex = 6;
             this.spatialToolStrip2.Text = "spatialToolStrip2";
+            this.spatialToolStrip2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.spatialToolStrip2_ItemClicked);
             // 
             // addEmptyLayerBtn
             // 
@@ -225,14 +228,14 @@
             this.addEmptyLayerBtn.Image = ((System.Drawing.Image)(resources.GetObject("addEmptyLayerBtn.Image")));
             this.addEmptyLayerBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.addEmptyLayerBtn.Name = "addEmptyLayerBtn";
-            this.addEmptyLayerBtn.Size = new System.Drawing.Size(23, 22);
+            this.addEmptyLayerBtn.Size = new System.Drawing.Size(24, 24);
             this.addEmptyLayerBtn.Text = "toolStripButton1";
             this.addEmptyLayerBtn.Click += new System.EventHandler(this.addEmptyLayerBtn_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
             // drawPolygonBtn
             // 
@@ -241,7 +244,7 @@
             this.drawPolygonBtn.Image = ((System.Drawing.Image)(resources.GetObject("drawPolygonBtn.Image")));
             this.drawPolygonBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.drawPolygonBtn.Name = "drawPolygonBtn";
-            this.drawPolygonBtn.Size = new System.Drawing.Size(23, 22);
+            this.drawPolygonBtn.Size = new System.Drawing.Size(24, 24);
             this.drawPolygonBtn.Text = "toolStripButton2";
             this.drawPolygonBtn.CheckedChanged += new System.EventHandler(this.draw_Polygon_Btn_Checked);
             // 
@@ -252,7 +255,7 @@
             this.drawLineBtn.Image = ((System.Drawing.Image)(resources.GetObject("drawLineBtn.Image")));
             this.drawLineBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.drawLineBtn.Name = "drawLineBtn";
-            this.drawLineBtn.Size = new System.Drawing.Size(23, 22);
+            this.drawLineBtn.Size = new System.Drawing.Size(24, 24);
             this.drawLineBtn.Text = "toolStripButton3";
             this.drawLineBtn.CheckedChanged += new System.EventHandler(this.draw_Line_Btn_Checked);
             // 
@@ -263,7 +266,7 @@
             this.drawPointBtn.Image = ((System.Drawing.Image)(resources.GetObject("drawPointBtn.Image")));
             this.drawPointBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.drawPointBtn.Name = "drawPointBtn";
-            this.drawPointBtn.Size = new System.Drawing.Size(23, 22);
+            this.drawPointBtn.Size = new System.Drawing.Size(24, 24);
             this.drawPointBtn.Text = "toolStripButton4";
             this.drawPointBtn.CheckedChanged += new System.EventHandler(this.draw_Point_Btn_Checked);
             // 
@@ -278,6 +281,7 @@
             // 
             // pnlOperations
             // 
+            this.pnlOperations.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.pnlOperations.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.shapeToolStripMenuItem,
@@ -285,7 +289,8 @@
             this.attributeToolStripMenuItem});
             this.pnlOperations.Location = new System.Drawing.Point(0, 0);
             this.pnlOperations.Name = "pnlOperations";
-            this.pnlOperations.Size = new System.Drawing.Size(600, 24);
+            this.pnlOperations.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.pnlOperations.Size = new System.Drawing.Size(800, 28);
             this.pnlOperations.TabIndex = 7;
             this.pnlOperations.Text = "menuStrip1";
             // 
@@ -297,30 +302,30 @@
             this.toolStripSeparator3,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(118, 26);
             this.loadToolStripMenuItem.Text = "Load";
             // 
             // clearToolStripMenuItem
             // 
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(118, 26);
             this.clearToolStripMenuItem.Text = "Clear";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(98, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(115, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(118, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // shapeToolStripMenuItem
@@ -330,7 +335,7 @@
             this.polylineToolStripMenuItem,
             this.polygonToolStripMenuItem});
             this.shapeToolStripMenuItem.Name = "shapeToolStripMenuItem";
-            this.shapeToolStripMenuItem.Size = new System.Drawing.Size(128, 20);
+            this.shapeToolStripMenuItem.Size = new System.Drawing.Size(160, 24);
             this.shapeToolStripMenuItem.Text = "Shape File Operation";
             // 
             // pointToolStripMenuItem
@@ -339,19 +344,19 @@
             this.createPointShapefileToolStripMenuItem,
             this.savePointShapefileToolStripMenuItem});
             this.pointToolStripMenuItem.Name = "pointToolStripMenuItem";
-            this.pointToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.pointToolStripMenuItem.Size = new System.Drawing.Size(137, 26);
             this.pointToolStripMenuItem.Text = "Point";
             // 
             // createPointShapefileToolStripMenuItem
             // 
             this.createPointShapefileToolStripMenuItem.Name = "createPointShapefileToolStripMenuItem";
-            this.createPointShapefileToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.createPointShapefileToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
             this.createPointShapefileToolStripMenuItem.Text = "Create Point Shapefile";
             // 
             // savePointShapefileToolStripMenuItem
             // 
             this.savePointShapefileToolStripMenuItem.Name = "savePointShapefileToolStripMenuItem";
-            this.savePointShapefileToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.savePointShapefileToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
             this.savePointShapefileToolStripMenuItem.Text = "Save Point Shapefile";
             // 
             // polylineToolStripMenuItem
@@ -360,19 +365,19 @@
             this.createPolylineShapefileToolStripMenuItem,
             this.savePolylineToolStripMenuItem});
             this.polylineToolStripMenuItem.Name = "polylineToolStripMenuItem";
-            this.polylineToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.polylineToolStripMenuItem.Size = new System.Drawing.Size(137, 26);
             this.polylineToolStripMenuItem.Text = "Polyline";
             // 
             // createPolylineShapefileToolStripMenuItem
             // 
             this.createPolylineShapefileToolStripMenuItem.Name = "createPolylineShapefileToolStripMenuItem";
-            this.createPolylineShapefileToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.createPolylineShapefileToolStripMenuItem.Size = new System.Drawing.Size(248, 26);
             this.createPolylineShapefileToolStripMenuItem.Text = "Create Polyline Shapefile";
             // 
             // savePolylineToolStripMenuItem
             // 
             this.savePolylineToolStripMenuItem.Name = "savePolylineToolStripMenuItem";
-            this.savePolylineToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.savePolylineToolStripMenuItem.Size = new System.Drawing.Size(248, 26);
             this.savePolylineToolStripMenuItem.Text = "Save Polyline";
             // 
             // polygonToolStripMenuItem
@@ -381,19 +386,19 @@
             this.createPolygonShapefileToolStripMenuItem,
             this.savePolygonShapefileToolStripMenuItem});
             this.polygonToolStripMenuItem.Name = "polygonToolStripMenuItem";
-            this.polygonToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.polygonToolStripMenuItem.Size = new System.Drawing.Size(137, 26);
             this.polygonToolStripMenuItem.Text = "Polygon";
             // 
             // createPolygonShapefileToolStripMenuItem
             // 
             this.createPolygonShapefileToolStripMenuItem.Name = "createPolygonShapefileToolStripMenuItem";
-            this.createPolygonShapefileToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.createPolygonShapefileToolStripMenuItem.Size = new System.Drawing.Size(250, 26);
             this.createPolygonShapefileToolStripMenuItem.Text = "Create Polygon Shapefile";
             // 
             // savePolygonShapefileToolStripMenuItem
             // 
             this.savePolygonShapefileToolStripMenuItem.Name = "savePolygonShapefileToolStripMenuItem";
-            this.savePolygonShapefileToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.savePolygonShapefileToolStripMenuItem.Size = new System.Drawing.Size(250, 26);
             this.savePolygonShapefileToolStripMenuItem.Text = "Save Polygon Shapefile";
             // 
             // mapOperationToolStripMenuItem
@@ -409,60 +414,60 @@
             this.panToolStripMenuItem,
             this.printMapToolStripMenuItem});
             this.mapOperationToolStripMenuItem.Name = "mapOperationToolStripMenuItem";
-            this.mapOperationToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
+            this.mapOperationToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
             this.mapOperationToolStripMenuItem.Text = "Map Operation";
             // 
             // defaultInformationToolStripMenuItem
             // 
             this.defaultInformationToolStripMenuItem.Name = "defaultInformationToolStripMenuItem";
-            this.defaultInformationToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.defaultInformationToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
             this.defaultInformationToolStripMenuItem.Text = "Default";
             // 
             // informationToolStripMenuItem
             // 
             this.informationToolStripMenuItem.Name = "informationToolStripMenuItem";
-            this.informationToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.informationToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
             this.informationToolStripMenuItem.Text = "Information";
             // 
             // measurementToolStripMenuItem
             // 
             this.measurementToolStripMenuItem.Name = "measurementToolStripMenuItem";
-            this.measurementToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.measurementToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
             this.measurementToolStripMenuItem.Text = "Measurement";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(152, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(184, 6);
             // 
             // zoomInToolStripMenuItem
             // 
             this.zoomInToolStripMenuItem.Name = "zoomInToolStripMenuItem";
-            this.zoomInToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.zoomInToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
             this.zoomInToolStripMenuItem.Text = "Zoom In";
             // 
             // zoomOutToolStripMenuItem
             // 
             this.zoomOutToolStripMenuItem.Name = "zoomOutToolStripMenuItem";
-            this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
             this.zoomOutToolStripMenuItem.Text = "Zoom Out";
             // 
             // zoomToExtentToolStripMenuItem
             // 
             this.zoomToExtentToolStripMenuItem.Name = "zoomToExtentToolStripMenuItem";
-            this.zoomToExtentToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.zoomToExtentToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
             this.zoomToExtentToolStripMenuItem.Text = "Zoom to Extent";
             // 
             // panToolStripMenuItem
             // 
             this.panToolStripMenuItem.Name = "panToolStripMenuItem";
-            this.panToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.panToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
             this.panToolStripMenuItem.Text = "Pan";
             // 
             // printMapToolStripMenuItem
             // 
             this.printMapToolStripMenuItem.Name = "printMapToolStripMenuItem";
-            this.printMapToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.printMapToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
             this.printMapToolStripMenuItem.Text = "Print Map";
             // 
             // attributeToolStripMenuItem
@@ -482,42 +487,42 @@
             // viewAttributeTableToolStripMenuItem
             // 
             this.viewAttributeTableToolStripMenuItem.Name = "viewAttributeTableToolStripMenuItem";
-            this.viewAttributeTableToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
+            this.viewAttributeTableToolStripMenuItem.Size = new System.Drawing.Size(333, 26);
             this.viewAttributeTableToolStripMenuItem.Text = "View Attribute table";
             // 
             // addAColumnInTheAttributeTableToolStripMenuItem
             // 
             this.addAColumnInTheAttributeTableToolStripMenuItem.Name = "addAColumnInTheAttributeTableToolStripMenuItem";
-            this.addAColumnInTheAttributeTableToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
+            this.addAColumnInTheAttributeTableToolStripMenuItem.Size = new System.Drawing.Size(333, 26);
             this.addAColumnInTheAttributeTableToolStripMenuItem.Text = "Add a column in the attribute table";
             // 
             // saveTheColumInShapeFileToolStripMenuItem
             // 
             this.saveTheColumInShapeFileToolStripMenuItem.Name = "saveTheColumInShapeFileToolStripMenuItem";
-            this.saveTheColumInShapeFileToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
+            this.saveTheColumInShapeFileToolStripMenuItem.Size = new System.Drawing.Size(333, 26);
             this.saveTheColumInShapeFileToolStripMenuItem.Text = "Save the colum in ShapeFile";
             // 
             // deleteAColumnInTheAttributeTableToolStripMenuItem
             // 
             this.deleteAColumnInTheAttributeTableToolStripMenuItem.Name = "deleteAColumnInTheAttributeTableToolStripMenuItem";
-            this.deleteAColumnInTheAttributeTableToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
+            this.deleteAColumnInTheAttributeTableToolStripMenuItem.Size = new System.Drawing.Size(333, 26);
             this.deleteAColumnInTheAttributeTableToolStripMenuItem.Text = "Delete a column in the attribute table";
             // 
             // updateAttributeTableInShapefileToolStripMenuItem
             // 
             this.updateAttributeTableInShapefileToolStripMenuItem.Name = "updateAttributeTableInShapefileToolStripMenuItem";
-            this.updateAttributeTableInShapefileToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
+            this.updateAttributeTableInShapefileToolStripMenuItem.Size = new System.Drawing.Size(333, 26);
             this.updateAttributeTableInShapefileToolStripMenuItem.Text = "Update attribute table in Shapefile";
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(267, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(330, 6);
             // 
             // exportAttributeTableToExcelToolStripMenuItem
             // 
             this.exportAttributeTableToExcelToolStripMenuItem.Name = "exportAttributeTableToExcelToolStripMenuItem";
-            this.exportAttributeTableToExcelToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
+            this.exportAttributeTableToExcelToolStripMenuItem.Size = new System.Drawing.Size(333, 26);
             this.exportAttributeTableToExcelToolStripMenuItem.Text = "Export Attribute table to Excel";
             // 
             // toolStripButton2
@@ -532,15 +537,16 @@
             // 
             // MainView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AllowDrop = true;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.spatialDockManager1);
             this.Controls.Add(this.spatialStatusStrip1);
             this.Controls.Add(this.spatialToolStrip2);
             this.Controls.Add(this.pnlOperations);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainView";
             this.Text = "AHLA-MAP";
             ((System.ComponentModel.ISupportInitialize)(this.HeaderControl)).EndInit();

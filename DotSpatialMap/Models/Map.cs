@@ -20,6 +20,9 @@ namespace DotSpatialMap.Models
 
         LayersFactory LayersFactory{ get; set; }
 
+        public FunctionMode MapFunction { set => map.FunctionMode = value; }
+
+
 
         public Map(IMap map)
         {
@@ -32,6 +35,8 @@ namespace DotSpatialMap.Models
         {
             IMapFeatureLayer layer = LayersFactory.CreateLayer(type, layerName);
             map.Layers.Add(layer);
+
+            map.MapFrame.DrawingLayers.Add(layer);
         }
 
         public void addFeature(IGeometry geometry)
@@ -58,6 +63,7 @@ namespace DotSpatialMap.Models
             }
 
             map.Refresh();
+            
            
         }
 
