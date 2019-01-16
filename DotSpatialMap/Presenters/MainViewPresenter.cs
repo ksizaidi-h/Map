@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using DotSpatialMap.Models;
 using DotSpatialMap.Views;
 
@@ -13,15 +14,13 @@ namespace DotSpatialMap.Presenters
 
         private AddLayerDialog addLayerDialog;
         private Map map;
+        private QueryForm queryForm;
 
         public override IModel Model { set => map = (Map)value; }
 
         public MainViewPresenter(IMainView view, Map map) : base(view)
         {
-            if (map == null)
-                throw new ArgumentNullException("Map");
             this.map = map;
-            
         }
 
         protected override void OnViewInitialize(object sender, EventArgs e)
@@ -31,10 +30,15 @@ namespace DotSpatialMap.Presenters
 
             View.SelelectedLayerName = "";
             View.AddEmptyLayer += AddEmptyLayer;
+            View.ExecuteTopologicalQuery += RunQuery;
             
         }
 
-      
+        private void RunQuery(object sender, EventArgs e)
+        {
+
+            queryForm = new QueryForm(map);
+        }
 
         private void AddEmptyLayer(object sender, EventArgs e)
         {
